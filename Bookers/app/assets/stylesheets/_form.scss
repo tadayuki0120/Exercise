@@ -1,0 +1,11 @@
+.vertical_line{
+    display:inline-block;
+      &::before{
+        content:"|";
+      }
+}
+
+.field, .action{
+  margin-bottom:13px;
+}
+

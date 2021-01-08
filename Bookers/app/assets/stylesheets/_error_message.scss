@@ -1,0 +1,23 @@
+.error_explanation{
+  width:380px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  border:2px solid red;
+
+  .error_count{
+    color:#fff;
+    background-color: #c00;
+    font-weight: bold;
+    padding:0 10px;
+  }
+  
+  .error_list{
+    padding:30px;
+  }
+}
+
+.field_with_errors {
+    padding: 2px;
+    background-color: red;
+    display: table;
+}

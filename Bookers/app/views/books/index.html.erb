@@ -1,0 +1,34 @@
+<h1 class="heading">Books</h1>
+
+<body>
+<table class="books_table">
+
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+        <td><%= link_to 'Show', book_path(book.id) %>
+            <%= link_to 'Edit', edit_book_path(book.id) %>
+            <%= link_to 'Destroy', book_path(book.id),
+              method: :delete, "data-confirm" => "本当に削除しますか" %>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<h2 class="heading">New book</h2>
+<%= render partial: 'form', locals: { book: @book } %>
+
+</body>
+
+
+

@@ -1,0 +1,6 @@
+<h1 class="heading">Editing Book</h1>
+<%= render partial: 'form', locals: { book: @book } %>
+
+<%= link_to 'Show', book_path(@book.id) %>
+<div class="vertical_line"></div>
+<%= link_to 'Back', books_path %>
