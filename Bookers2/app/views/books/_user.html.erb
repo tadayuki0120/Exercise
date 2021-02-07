@@ -1,0 +1,23 @@
+<h2>User info</h2>
+<dl>
+  <div class="image">
+    <dt>画像</dt>
+    <dd><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg",size:'100x100' %></dd>
+  </div>
+
+  <div class="name">
+    <dt>name</dt>
+    <dd><%= @user.name %></dd>
+  </div>
+
+  <div class="introduction">
+    <dt>introduction</dt>
+    <dd><%= @user.introduction %></dd>
+  </div>
+</dl>
+
+  <%= link_to  edit_user_path(current_user.id), class: :user_btn do %>
+    <i class="fas fa-user-cog"></i>
+  <% end %>
+
+

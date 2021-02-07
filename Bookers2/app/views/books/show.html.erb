@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <%=render partial:"user", locals:{ user: @user } %>
+      
+      <%=render partial:"new", locals:{ book: @book } %>
+      
+    </div>
+    
+    <div class="col">
+      <h2>Book detal</h2>
+        <table>
+      
+          <tbody>
+      
+            <tr>
+              <td>
+                <div class="book_show_user_name">
+                <%= link_to user_path(@book.user.id) do %>
+                <%= attachment_image_tag @book.user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %><br>
+                  <%= @book.user.name %>
+                </div>
+                <% end %>
+              </td>
+            
+              <td><%= @book.title %></td>
+              <td><%= @book.opinion %></td>
+      
+              <% if @book.user == current_user %>
+              <td><%= link_to "Edit", edit_book_path(@book.id), class: :"btn btn-success" %></td>
+              <td><%= link_to "Destroy", book_path(@book.id), method: :delete, class: :"btn btn-danger" %></td>
+              <% end %>
+      
+            </tr>
+      
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+ 

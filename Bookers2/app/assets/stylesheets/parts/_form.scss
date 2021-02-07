@@ -1,0 +1,6 @@
+  .vertical_line{
+    display:inline-block;
+      &::before{
+        content:"|";
+      }
+  }

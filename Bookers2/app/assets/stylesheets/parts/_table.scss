@@ -1,0 +1,32 @@
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+
+    thead{
+      border-top: solid 1px #eee;
+      border-bottom: solid 1px #eee;
+      th{
+      padding:10px 0;
+
+      }
+    }
+    tbody{
+      tr{
+        border-bottom: solid 1px #eee;
+        &:hover{
+          background-color: rgba(0,0,0,0.075);
+        }
+        th {
+          padding: 20px;
+          text-aligin:center;
+            }
+        td {
+          padding: 3px 15px;
+          .book_show_user_name{
+              text-align:center;
+          }
+        }
+     }
+    }
+  }

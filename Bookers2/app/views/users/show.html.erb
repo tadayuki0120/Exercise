@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <%=render partial:"books/user", locals:{ user: @user } %>
+      
+      <%=render partial:"books/new", locals:{ book_new: @book_new } %>
+    </div>
+    <div class="col">
+      <%=render partial:"books/list", locals:{ books: @user.books } %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <%=render partial:"error", locals:{ book: @book } %>
+    </div>
+    
+    <div class="row">
+        <div class="col">
+        
+            <%=render partial:"user", locals:{ user: @user } %>
+                
+            <h2>New book</h2>
+                <%= form_with model:@book, local:true do |form| %>
+        
+                  <p><%= form.label :title, "title" %><br>
+                  <%= form.text_field :title %></p>
+        
+                  <p><%= form.label :opinion, "Opinion" %><br>
+                  <%= form.text_area :opinion %></p>
+                
+                  <%= form.submit "Create Book", class:"btn btn-success"%>
+        
+                <% end %>
+        </div>
+    
+        <div class="col">
+            <%=render partial:"list", locals:{ books: @books } %>
+        </div>
+        
+    </div>
+</div> 
