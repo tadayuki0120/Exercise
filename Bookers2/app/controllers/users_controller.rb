@@ -1,25 +1,26 @@
 class UsersController < ApplicationController
-  
+before_action :ensure_correct_user, only:[:edit, :update]
+
   def index
-    @books = Book.all
-    @users = User.all
+    @users = User.includes(:books)
     @user =current_user
     @book_new = Book.new
   end
 
   def show
     @user = User.find(params[:id])
+    @books = @user.books
     @book_new = Book.new
   end
-  
+
   def create
     @book=Book.new(book_params)
     @book.user_id = current_user.id
-    @user=current_user
-    @books=Book.all
     if @book.save
     redirect_to user_path(@user.id)
     else
+    @user=current_user
+    @books=Book.includes(:user)
     render books_path
     end
   end
@@ -31,7 +32,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to user_path(@user.id)
+      redirect_to user_path(@user.id), notice: 'You have updated user successfully.'
     else
       render :edit
     end
@@ -43,8 +44,15 @@ class UsersController < ApplicationController
   end
 
   def book_params
-    params.require(:book).permit(:title, :opinion)
+    params.require(:book).permit(:title, :body)
   end
+
+   def ensure_correct_user
+    @user = User.find(params[:id])
+     unless @user.id == current_user.id
+      redirect_to current_user
+     end
+   end
 
 end
 

@@ -1,18 +1,18 @@
 <div class="container">
   <div class="row">
-    <div class="col-4">
-      <%=render partial:"user", locals:{ user: @user } %>
-      
+    <div class="col-md-3">
+      <%=render partial:"user", locals:{ user: @user_select } %>
+
       <%=render partial:"new", locals:{ book: @book } %>
-      
+
     </div>
-    
-    <div class="col">
-      <h2>Book detal</h2>
+
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
         <table>
-      
+
           <tbody>
-      
+
             <tr>
               <td>
                 <div class="book_show_user_name">
@@ -22,21 +22,21 @@
                 </div>
                 <% end %>
               </td>
-            
-              <td><%= @book.title %></td>
-              <td><%= @book.opinion %></td>
-      
+
+              <td><%=link_to @book.title,book_path(current_user.id) %></td>
+              <td><%= @book.body %></td>
+
               <% if @book.user == current_user %>
               <td><%= link_to "Edit", edit_book_path(@book.id), class: :"btn btn-success" %></td>
-              <td><%= link_to "Destroy", book_path(@book.id), method: :delete, class: :"btn btn-danger" %></td>
+              <td><%= link_to "Destroy", book_path(@book.id), method: :delete, class: :"btn btn-danger",
+                    "data-confirm"=>"本当に削除しますか？" %></td>
               <% end %>
-      
+
             </tr>
-      
+
           </tbody>
         </table>
       </div>
     </div>
   </div>
-  
- 
+
